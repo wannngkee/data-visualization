@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section className="sectionOne">
+        <img
+          className="backgroundImg"
+          src="imgs/background.jpg"
+          alt="melbourne city"
+        />
+        <div className="titleBlock">
+          <h1>Plan Your Business in Melbourne</h1>
+        </div>
+        <div className="descBlock">
+          <p>
+            Find Out the Thriving Industies and the Perfect Locations To Start
+            With.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
