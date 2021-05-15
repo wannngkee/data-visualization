@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { Checkbox } from "antd";
 import * as d3 from "d3";
 import businessData from "../../data/business.json";
+import industry from "../../data/industry";
 import { max, stackOrderDescending, svg } from "d3";
 import "./index.css";
 
@@ -50,7 +51,6 @@ const BarChart = (props) => {
       });
       return { year: item.year, total: total };
     });
-    console.log(totalList);
     // scales
     const xScale = d3
       .scaleBand()
@@ -108,7 +108,6 @@ const BarChart = (props) => {
       .attr("class", "text")
       .attr("text-anchor", "middle")
       .merge(text)
-      // .join(totalList)
       .attr("x", (d) =>
         d.total > 0 ? xScale(d.year) + xScale.bandwidth() / 2 : 0
       )
@@ -118,9 +117,7 @@ const BarChart = (props) => {
 
   return (
     <>
-      <div id="tooltip-container">
-        <p id="tooltip-text">Tooltip text</p>
-      </div>
+      <div id="tooltip-container" />
       <div className="chart">
         <svg ref={svgRef}>
           <g className="x-axis" />
@@ -136,10 +133,12 @@ const SectionTwo = () => {
   const [checkedList, setCheckedList] = useState(Object.keys(colors));
   const [indeterminate, setIndeterminate] = React.useState(true);
   const [checkAll, setCheckAll] = useState(true);
+  let avgGrowth;
+  let avgYear;
   const onChange = (list) => {
     setCheckedList(list);
     setIndeterminate(!!list.length && list.length < allKeys.length);
-    setCheckAll(list.length === checkedList.length);
+    setCheckAll(list.length === allKeys.length);
   };
 
   const onCheckAllChange = (e) => {
@@ -147,21 +146,54 @@ const SectionTwo = () => {
     setIndeterminate(false);
     setCheckAll(e.target.checked);
   };
+
+  const selected = industry.filter((item) =>
+    checkedList.includes(item.industry)
+  );
+  let totalYear = 0;
+  let begin = 0;
+  let end = 0;
+  checkedList.forEach((item) => {
+    begin += businessData.data[0][item];
+  });
+  console.log("begin", begin);
+  checkedList.forEach((item) => {
+    end += businessData.data[4][item];
+  });
+  console.log("end", end);
+  avgGrowth = (((end - begin) / begin / 4) * 100).toFixed(2);
+
+  selected.forEach((select) => {
+    totalYear += select.survival;
+  });
+  avgYear = (totalYear / selected.length).toFixed(2);
+
   return (
     <>
       <section className="sectionTwo">
         <div className="sectionTitle">
           <h1>Business Market Overview</h1>
-          <p>From 2015 - 2019</p>
+          <p>From 2015 to 2019</p>
         </div>
         <div className="container">
           <div className="left">
             <BarChart keys={checkedList} colors={colors} />
           </div>
           <div className="right">
-            <div className="text">
-              <h2>Average growth rate: </h2>
-              <h2>Average survival years: </h2>
+            <div
+              className="desc"
+              style={{
+                visibility: checkedList.length > 0 ? "visible" : "hidden",
+              }}
+            >
+              <h3>
+                Yearly growth rate:{" "}
+                <span className="number">{`${avgGrowth}%`}</span>
+              </h3>
+              <h3>
+                Average survival years:{" "}
+                <span className="number">{`${avgYear} years`}</span>
+              </h3>
             </div>
             <div className="options">
               <Checkbox
@@ -172,13 +204,14 @@ const SectionTwo = () => {
                 All Industries
               </Checkbox>
               <hr />
-              <CheckboxGroup
-                // options={allKeys}
-                value={checkedList}
-                onChange={onChange}
-              >
+              <CheckboxGroup value={checkedList} onChange={onChange}>
                 {allKeys.map((key, index) => (
-                  <div>
+                  <div
+                    style={{
+                      borderColor: colors.key,
+                      backgroundColor: colors.key,
+                    }}
+                  >
                     <Checkbox key={index} value={key}>
                       {key}
                     </Checkbox>
