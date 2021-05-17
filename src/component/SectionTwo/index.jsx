@@ -156,11 +156,9 @@ const SectionTwo = () => {
   checkedList.forEach((item) => {
     begin += businessData.data[0][item];
   });
-  console.log("begin", begin);
   checkedList.forEach((item) => {
     end += businessData.data[4][item];
   });
-  console.log("end", end);
   avgGrowth = (((end - begin) / begin / 4) * 100).toFixed(2);
 
   selected.forEach((select) => {
