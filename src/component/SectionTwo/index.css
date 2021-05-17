@@ -10,7 +10,7 @@
   text-align: center;
 }
 
-.container {
+.containerTwo {
   display: flex;
   justify-content: space-around;
 }
@@ -46,4 +46,8 @@ svg {
 .number {
   background-color: #94b5c0;
   letter-spacing: normal;
+}
+
+.layer rect:hover {
+  opacity: 0.6;
 }

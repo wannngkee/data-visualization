@@ -70,7 +70,6 @@ const BarChart = (props) => {
       .selectAll("rect")
       .data((layer) => layer)
       .join("rect")
-      .style("opacity", 1)
       .attr("x", (sequence) => xScale(sequence.data.year))
       .attr("width", xScale.bandwidth())
       .attr("y", (sequence) => yScale(sequence[1]))
@@ -84,7 +83,7 @@ const BarChart = (props) => {
           .style("display", "inline-block")
           .html(`<b>Industry:</b> ${industry} <br/><b>Count:</b> ${count}`)
           .style("left", event.pageX + "px")
-          .style("top", event.pageY - 700 + "px");
+          .style("top", event.pageY - 800 + "px");
       })
       .on("mouseout", (event, d) => {
         d3.select("#tooltip-container").style("display", "none");
@@ -173,7 +172,7 @@ const SectionTwo = () => {
           <h1>Business Market Overview</h1>
           <p>From 2015 to 2019</p>
         </div>
-        <div className="container">
+        <div className="containerTwo">
           <div className="left">
             <BarChart keys={checkedList} colors={colors} />
           </div>
