@@ -8,6 +8,13 @@ const data = industry
   .sort((a, b) => b.growth - a.growth);
 
 const BarChart = () => {
+  const [lineData, setLineData] = useState([
+    { year: 2016 },
+    { year: 2017 },
+    { year: 2018 },
+    { year: 2019 },
+  ]);
+  const [industry, setIndustry] = useState();
   const svgRef = useRef();
   useEffect(() => {
     const margin = { top: 30, right: 0, bottom: 30, left: 30 };
@@ -46,7 +53,15 @@ const BarChart = () => {
       .attr("width", 0)
       .attr("height", yScale.bandwidth())
       .on("mouseover", (e, d) => {
-        console.log(d);
+        let newLineData = lineData;
+        d.entry.forEach((e, i) => {
+          newLineData[i]["entry"] = e;
+        });
+        d.exist.forEach((e, i) => {
+          newLineData[i]["exist"] = e;
+        });
+        setLineData(newLineData);
+        setIndustry(d.industry);
       });
 
     svg
@@ -97,143 +112,137 @@ const BarChart = () => {
     d3.select(".sectionThree").on("mouseout", () => {
       svg.selectAll("rect").transition().duration(800).attr("width", 0);
     });
-  }, []);
+  }, [lineData]);
   return (
     <>
-      <svg ref={svgRef}>
-        <g className="x-axis" />
-        <g className="y-axis" />
-      </svg>
+      <div className="left">
+        <svg ref={svgRef}>
+          <g className="x-axis" />
+          <g className="y-axis" />
+        </svg>
+      </div>
+      <div className="right">
+        <LineChart lineData={lineData} industry={industry} />
+      </div>
     </>
   );
 };
 
-const LineChart = () => {
-  const lineData = [
-    {
-      year: 2016,
-      entry: 20.5,
-      exist: 13,
-    },
-    {
-      year: 2017,
-      entry: 31.7,
-      exist: 17,
-    },
-    {
-      year: 2018,
-      entry: 17.5,
-      exist: 15,
-    },
-    {
-      year: 2019,
-      entry: 24.3,
-      exist: 23,
-    },
-  ];
+const LineChart = (props) => {
+  const { lineData, industry } = props;
   const svgRef = useRef();
-
+  const length = Object.keys(lineData[0]).length;
   useEffect(() => {
     const margin = { top: 30, right: 0, bottom: 10, left: 30 };
     const width = 350 - margin.left - margin.right;
     const height = 350 - margin.top - margin.top;
     const svg = d3.select(svgRef.current);
 
-    // const parseTime = d3.timeFormat("%Y");
-    // lineData.forEach((d) => {
-    //   d.year = parseTime(d.year);
-    // });
     svg
       .attr("width", 350)
       .attr("height", 350)
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    const xScale = d3
-      .scaleBand()
-      .domain(lineData.map((item) => item.year))
-      .range([0, width]);
+    if (length > 1) {
+      const xScale = d3
+        .scaleBand()
+        .domain(lineData.map((item) => item.year))
+        .range([0, width]);
 
-    const ymax = d3.max(lineData, (d) => d.entry);
+      const ymax = d3.max(lineData, (d) => d.entry);
 
-    const yScale = d3.scaleLinear().domain([0, ymax]).range([height, 0]);
+      const yScale = d3.scaleLinear().domain([0, ymax]).range([height, 0]);
 
-    const entryPath = d3
-      .line()
-      .x((d) => xScale(d.year))
-      .y((d) => yScale(d.entry));
-    // .curve(d3.curveMonotoneX);
+      const entryPath = d3
+        .line()
+        .x((d) => xScale(d.year))
+        .y((d) => yScale(d.entry));
+      // .curve(d3.curveMonotoneX);
 
-    const existPath = d3
-      .line()
-      .x((d) => xScale(d.year))
-      .y((d) => yScale(d.exist));
-    // .curve(d3.curveMonotoneX);
+      const existPath = d3
+        .line()
+        .x((d) => xScale(d.year))
+        .y((d) => yScale(d.exist));
+      // .curve(d3.curveMonotoneX);
 
-    svg
-      .append("path")
-      .datum(lineData)
-      .attr("class", "line-path")
-      .attr("transform", "translate(" + 50 + ",0)")
-      .attr("d", entryPath)
-      .attr("fill", "none")
-      .attr("stroke-width", 3)
-      .attr("stroke", "steelblue");
+      svg
+        .selectAll(".line-path1")
+        .data([lineData])
+        .join("path")
+        .attr("class", "line-path1")
+        .attr("transform", "translate(" + 50 + ",0)")
+        .attr("d", entryPath)
+        .attr("fill", "none")
+        .attr("stroke-width", 3)
+        .attr("stroke", "steelblue");
 
-    svg
-      .append("path")
-      .datum(lineData)
-      .attr("class", "line-path")
-      .attr("transform", "translate(" + 50 + ",0)")
-      .attr("d", existPath)
-      .attr("fill", "none")
-      .attr("stroke-width", 3)
-      .attr("stroke", "orange");
+      svg
+        .selectAll(".line-path2")
+        .data([lineData])
+        .join("path")
+        .attr("class", "line-path2")
+        .attr("transform", "translate(" + 50 + ",0)")
+        .attr("d", existPath)
+        .attr("fill", "none")
+        .attr("stroke-width", 3)
+        .attr("stroke", "orange");
 
-    const xAxis = d3.axisBottom().scale(xScale);
-    const yAxis = d3
-      .axisLeft()
-      .scale(yScale)
-      .tickFormat((d) => d + "%");
-    svg
-      .select(".x-axis")
-      .attr("transform", `translate(0,${height})`)
-      .call(xAxis);
+      const xAxis = d3.axisBottom().scale(xScale);
+      const yAxis = d3
+        .axisLeft()
+        .scale(yScale)
+        .tickFormat((d) => d + "%");
+      svg
+        .select(".x-axis")
+        .attr("transform", `translate(0,${height})`)
+        .call(xAxis);
 
-    svg.select(".y-axis").call(yAxis);
+      svg.select(".y-axis").call(yAxis);
 
-    //legend
-    svg
-      .append("rect")
-      .attr("x", 0)
-      .attr("y", height + margin.bottom + 32)
-      .attr("width", 10)
-      .attr("height", 10)
-      .attr("rx", 3)
-      .attr("ry", 3)
-      .style("fill", "steelblue");
-    svg
-      .append("rect")
-      .attr("x", 78)
-      .attr("y", height + margin.bottom + 32)
-      .attr("width", 10)
-      .attr("height", 10)
-      .attr("rx", 3)
-      .attr("ry", 3)
-      .style("fill", "orange");
-    svg
-      .append("text")
-      .attr("x", 12)
-      .attr("y", height + margin.bottom + margin.top + 10)
-      .text("entry rate ")
-      .style("font-size", "10px");
-    svg
-      .append("text")
-      .attr("x", 90)
-      .attr("y", height + margin.bottom + margin.top + 10)
-      .text("exist rate")
-      .style("font-size", "10px");
-  }, []);
+      d3.select(".text1").remove();
+      d3.select(".text2").remove();
+      d3.select(".rect1").remove();
+      d3.select(".rect2").remove();
+
+      //legend
+      svg
+        .append("rect")
+        .attr("class", "rect1")
+        .attr("x", 0)
+        .attr("y", height + margin.bottom + 32)
+        .attr("width", 10)
+        .attr("height", 10)
+        .attr("rx", 3)
+        .attr("ry", 3)
+        .style("fill", "steelblue");
+
+      svg
+        .append("rect")
+        .attr("class", "rect2")
+        .attr("x", 78)
+        .attr("y", height + margin.bottom + 32)
+        .attr("width", 10)
+        .attr("height", 10)
+        .attr("rx", 3)
+        .attr("ry", 3)
+        .style("fill", "orange");
+      svg
+        .append("text")
+        .attr("class", "text1")
+        .attr("x", 12)
+        .attr("y", height + margin.bottom + margin.top + 10)
+        .text("entry rate ")
+        .style("font-size", "10px");
+      svg
+        .append("text")
+        .attr("class", "text2")
+        .attr("x", 90)
+        .attr("y", height + margin.bottom + margin.top + 10)
+        .text("exist rate")
+        .style("font-size", "10px");
+    }
+  }, [lineData, industry, length]);
   return (
     <>
       <svg ref={svgRef}>
@@ -252,12 +261,7 @@ const SectionThree = () => {
         <p>See the trend from how industries grow</p>
       </div>
       <div className="containerThree">
-        <div className="left">
-          <BarChart />
-        </div>
-        <div className="right">
-          <LineChart />
-        </div>
+        <BarChart />
       </div>
     </section>
   );
