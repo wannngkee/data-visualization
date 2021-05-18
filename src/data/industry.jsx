@@ -74,7 +74,7 @@ const industry = [
     industry: "Public Administration and Safety",
     growth: 0.129,
     survival: 3.26,
-    entry: [0.091, 0.191, 0.093, 0.0178],
+    entry: [0.091, 0.191, 0.093, 0.178],
     exist: [0.1, 0.18, 0.07, 0.12],
   },
   {
