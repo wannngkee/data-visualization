@@ -6,7 +6,27 @@
       "properties": {
         "featurenam": "Kensington",
         "shape_area": "3808797.49677",
-        "shape_len": "9407.05542058"
+        "shape_len": "9407.05542058",
+        "data":{
+            "Accommodation and Food services": [46,46,52,52,50],
+            "Administrative and Support Services": [10,10,10,10,9],
+            "Agriculture, Forestry and Fishing": [2,2,2,2,2],
+            "Arts and Recreation Services": [36,36,34,34,27],
+            "Construction": [22,22,26,26,22],
+            "Education and Training": [9,9,10,10,9],
+            "Electricity, Gas, Water and Waste Services": [0,0,2,2,0],
+            "Financial and Insurance Services": [4,4,3,3,2],
+            "Health Care and Social Assistance": [22,22,23,23,25],
+            "Information Media and Telecommunications": [8,8,6,6,6],
+            "Manufacturing": [45,45,48,48,42],
+            "Other Services": [40,40,43,43,40],
+            "Professional, Scientific and Technical Services": [42,42,37,37,38],
+            "Public Administration and Safety": [6,6,5,5,5],
+            "Rental, Hiring and Real Estate Services": [13,13,15,15,13],
+            "Retail Trade": [38,38,39,39,30],
+            "Transport, Postal and Warehousing": [13,13,11,11,11],
+            "Wholesale Trade": [27,27,24,24,30]
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -747,7 +767,27 @@
       "properties": {
         "featurenam": "Parkville",
         "shape_area": "4050997.2362",
-        "shape_len": "9224.56939673"
+        "shape_len": "9224.56939673",
+        "data":{
+            "Accommodation and Food services": [70,87,87,85,85],
+            "Administrative and Support Services": [4,5,5,7,7],
+            "Agriculture, Forestry and Fishing": [0,0,0,0,0],
+            "Arts and Recreation Services": [10,12,12,12,16],
+            "Construction": [1,0,0,0,0],
+            "Education and Training": [20,65,65,59,59],
+            "Electricity, Gas, Water and Waste Services": [0,0,0,0,0],
+            "Financial and Insurance Services": [8,5,5,7,7],
+            "Health Care and Social Assistance": [77,90,90,95,95],
+            "Information Media and Telecommunications": [1,1,1,1,1],
+            "Manufacturing": [2,3,3,3,3],
+            "Other Services": [17,21,21,19,19],
+            "Professional, Scientific and Technical Services": [21,20,20,20,20],
+            "Public Administration and Safety": [4,3,3,3,3],
+            "Rental, Hiring and Real Estate Services": [1,1,1,1,1],
+            "Retail Trade": [20,22,22,22,22],
+            "Transport, Postal and Warehousing": [3,3,3,2,2],
+            "Wholesale Trade": [0,1,1,1,1]
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -1296,7 +1336,27 @@
       "properties": {
         "featurenam": "North Melbourne",
         "shape_area": "2408377.21789",
-        "shape_len": "7546.64919141"
+        "shape_len": "7546.64919141",
+        "data":{
+            "Accommodation and Food services": [119,125,125,130,130],
+            "Administrative and Support Services": [39,32,32,34,34],
+            "Agriculture, Forestry and Fishing": [1,1,1,1,1],
+            "Arts and Recreation Services": [40,41,41,35,35],
+            "Construction": [41,43,43,42,43],
+            "Education and Training": [32,40,40,37,37],
+            "Electricity, Gas, Water and Waste Services": [4,1,1,1,1],
+            "Financial and Insurance Services": [20,21,21,23,23],
+            "Health Care and Social Assistance": [101,105,105,107,107],
+            "Information Media and Telecommunications": [21,17,17,16,16],
+            "Manufacturing": [56,50,50,40,40],
+            "Other Services": [130,131,131,128,128],
+            "Professional, Scientific and Technical Services": [144,131,131,153,153],
+            "Public Administration and Safety": [14,11,11,10,10],
+            "Rental, Hiring and Real Estate Services": [22,20,20,20,20],
+            "Retail Trade": [92,92,92,91,91],
+            "Transport, Postal and Warehousing": [26,25,25,21,21],
+            "Wholesale Trade": [67,60,60,50,50]
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -1957,7 +2017,27 @@
       "properties": {
         "featurenam": "West Melbourne (Residential)",
         "shape_area": "860054.675679",
-        "shape_len": "4031.46799307"
+        "shape_len": "4031.46799307",
+        "data":{
+            "Accommodation and Food services": [59,49,49,59,59],
+            "Administrative and Support Services": [12,17,17,14,14],
+            "Agriculture, Forestry and Fishing": [1,0,0,0,0],
+            "Arts and Recreation Services": [7,8,8,8,10],
+            "Construction": [9,13,13,14,14],
+            "Education and Training": [21,20,20,23,23],
+            "Electricity, Gas, Water and Waste Services": [0,0,0,0,0],
+            "Financial and Insurance Services": [13,13,13,11,11],
+            "Health Care and Social Assistance": [18,19,19,26,26],
+            "Information Media and Telecommunications": [13,10,10,9,9],
+            "Manufacturing": [16,13,13,8,8],
+            "Other Services": [51,46,46,50,50],
+            "Professional, Scientific and Technical Services": [99,91,91,98,98],
+            "Public Administration and Safety": [5,5,5,4,4],
+            "Rental, Hiring and Real Estate Services": [7,11,11,8,8],
+            "Retail Trade": [40,42,42,42,42],
+            "Transport, Postal and Warehousing": [19,14,14,15,15],
+            "Wholesale Trade": [32,27,27,23,23]
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -2134,7 +2214,27 @@
       "properties": {
         "featurenam": "West Melbourne (Industrial)",
         "shape_area": "5917883.21599",
-        "shape_len": "11793.960449"
+        "shape_len": "11793.960449",
+        "data":{
+            "Accommodation and Food services": [9,6,6,6,6],
+            "Administrative and Support Services": [0,0,0,0,0],
+            "Agriculture, Forestry and Fishing": [1,0,0,0,0],
+            "Arts and Recreation Services": [4,3,3,4,5],
+            "Construction": [1,1,1,5,5],
+            "Education and Training": [0,0,0,0,0],
+            "Electricity, Gas, Water and Waste Services": [6,4,4,3,3],
+            "Financial and Insurance Services": [1,0,0,0,0],
+            "Health Care and Social Assistance": [0,0,0,0,0],
+            "Information Media and Telecommunications": [1,1,1,0,0],
+            "Manufacturing": [10,9,9,7,7],
+            "Other Services": [7,6,6,5,5],
+            "Professional, Scientific and Technical Services": [5,4,4,6,7],
+            "Public Administration and Safety": [3,2,2,1,1],
+            "Rental, Hiring and Real Estate Services": [11,2,2,2,2],
+            "Retail Trade": [8,7,7,3,3],
+            "Transport, Postal and Warehousing": [33,28,28,31,44],
+            "Wholesale Trade": [200,33,33,32,32]
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -2835,7 +2935,27 @@
       "properties": {
         "featurenam": "Port Melbourne",
         "shape_area": "5470092.78821",
-        "shape_len": "15117.7233976"
+        "shape_len": "15117.7233976",
+        "data":{
+            "Accommodation and Food services": [21,21,23,23,21],
+            "Administrative and Support Services": [21,21,27,27,26],
+            "Agriculture, Forestry and Fishing": [1,1,1,1,1],
+            "Arts and Recreation Services": [6,6,5,5,8],
+            "Construction": [49,49,68,68,65],
+            "Education and Training": [5,5,5,5,9],
+            "Electricity, Gas, Water and Waste Services": [1,1,1,1,4],
+            "Financial and Insurance Services": [9,9,9,9,7],
+            "Health Care and Social Assistance": [5,5,4,4,7],
+            "Information Media and Telecommunications": [15,15,20,20,22],
+            "Manufacturing": [88,88,87,87,85],
+            "Other Services": [15,15,16,16,17],
+            "Professional, Scientific and Technical Services": [81,81,75,75,74],
+            "Public Administration and Safety": [12,12,8,8,16],
+            "Rental, Hiring and Real Estate Services": [16,16,22,22,20],
+            "Retail Trade": [24,24,25,25,32],
+            "Transport, Postal and Warehousing": [31,31,33,33,34],
+            "Wholesale Trade": [74,74,69,69,60]
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -3464,7 +3584,27 @@
       "properties": {
         "featurenam": "Docklands",
         "shape_area": "2856028.73238",
-        "shape_len": "9588.24778517"
+        "shape_len": "9588.24778517",
+        "data":{
+            "Accommodation and Food services": [224,261,261,276,276],
+            "Administrative and Support Services": [31,38,38,40,40],
+            "Agriculture, Forestry and Fishing": [2,3,3,3,3],
+            "Arts and Recreation Services": [34,33,33,43,42],
+            "Construction": [18,22,22,23,23],
+            "Education and Training": [11,17,17,17,17],
+            "Electricity, Gas, Water and Waste Services": [0,4,4,5,5],
+            "Financial and Insurance Services": [32,48,48,58,58],
+            "Health Care and Social Assistance": [21,33,33,40,40],
+            "Information Media and Telecommunications": [18,25,25,28,28],
+            "Manufacturing": [18,13,13,16,16],
+            "Other Services": [56,57,57,66,67],
+            "Professional, Scientific and Technical Services": [123,152,152,181,181],
+            "Public Administration and Safety": [11,14,14,25,25],
+            "Rental, Hiring and Real Estate Services": [50,65,65,69,69],
+            "Retail Trade": [233,217,217,200,200],
+            "Transport, Postal and Warehousing": [35,44,44,40,40],
+            "Wholesale Trade": [20,26,26,25,25]
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -3937,7 +4077,27 @@
       "properties": {
         "featurenam": "Melbourne (CBD)",
         "shape_area": "2485904.89194",
-        "shape_len": "7112.60987105"
+        "shape_len": "7112.60987105",
+        "data":{
+            "Accommodation and Food services": [1688,1728,1749,1785,1823],
+            "Administrative and Support Services": [430,428,409,400,392],
+            "Agriculture, Forestry and Fishing": [46,41,38,40,39],
+            "Arts and Recreation Services": [140,152,159,156,158],
+            "Construction": [89,98,118,130,145],
+            "Education and Training": [293,318,327,349,364],
+            "Electricity, Gas, Water and Waste Services": [26,27,31,28,31],
+            "Financial and Insurance Services": [667,708,730,746,754],
+            "Health Care and Social Assistance": [406,414,410,406,407],
+            "Information Media and Telecommunications": [125,123,126,115,103],
+            "Manufacturing": [249,241,239,227,225],
+            "Other Services": [822,886,891,939,935],
+            "Professional, Scientific and Technical Services": [1834,1821,1897,1840,1829],
+            "Public Administration and Safety": [153,152,160,154,185],
+            "Rental, Hiring and Real Estate Services": [205,220,254,258],
+            "Retail Trade": [1523,1527,1511,1448,1427],
+            "Transport, Postal and Warehousing": [81,84,84,82,79],
+            "Wholesale Trade": [112,115,124,115,109]
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -4270,7 +4430,27 @@
       "properties": {
         "featurenam": "Southbank",
         "shape_area": "1596010.33174",
-        "shape_len": "6012.37723915"
+        "shape_len": "6012.37723915",
+        "data":{
+            "Accommodation and Food services": [205,205,209,209,241],
+            "Administrative and Support Services": [25,25,32,32,33],
+            "Agriculture, Forestry and Fishing": [7,7,10,10,7],
+            "Arts and Recreation Services": [37,37,38,38,43],
+            "Construction": [35,35,38,37,33],
+            "Education and Training": [16,16,16,16,17],
+            "Electricity, Gas, Water and Waste Services": [3,3,3,3,5],
+            "Financial and Insurance Services": [29,29,28,28,33],
+            "Health Care and Social Assistance": [28,28,31,31,31],
+            "Information Media and Telecommunications": [20,20,22,22,21],
+            "Manufacturing": [11,11,14,14,14],
+            "Other Services": [21,21,22,22,20],
+            "Professional, Scientific and Technical Services": [135,135,120,120,111],
+            "Public Administration and Safety": [8,8,7,7,10],
+            "Rental, Hiring and Real Estate Services": [21,31,36,36,31],
+            "Retail Trade": [229,229,237,237,234],
+            "Transport, Postal and Warehousing": [15,15,12,12,11],
+            "Wholesale Trade": [22,22,17,17,17]
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -4711,7 +4891,27 @@
       "properties": {
         "featurenam": "South Yarra",
         "shape_area": "1057773.39715",
-        "shape_len": "5424.13644582"
+        "shape_len": "5424.13644582",
+        "data":{
+            "Accommodation and Food services": [12,12,11,11,11],
+            "Administrative and Support Services": [1,1,1,1,1],
+            "Agriculture, Forestry and Fishing": [0,0,0,0,0],
+            "Arts and Recreation Services": [1,1,1,1,2],
+            "Construction": [0,0,0,0,0],
+            "Education and Training": [8,8,7,7,7],
+            "Electricity, Gas, Water and Waste Services": [0,0,1,0,0,0],
+            "Financial and Insurance Services": [0,0,1,0,0,0],
+            "Health Care and Social Assistance": [1,1,1,1,1,1],
+            "Information Media and Telecommunications": [1,1,1,1,1,2],
+            "Manufacturing": [0,0,1,1,1],
+            "Other Services": [9,9,7,7,7],
+            "Professional, Scientific and Technical Services": [0,0,0,0,0],
+            "Public Administration and Safety": [1,1,1,1,1],
+            "Rental, Hiring and Real Estate Services": [0,0,0,0,0],
+            "Retail Trade": [5,5,4,4,4],
+            "Transport, Postal and Warehousing": [0,0,0,0,0],
+            "Wholesale Trade": [0,0,4,0,0]
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -5024,7 +5224,27 @@
       "properties": {
         "featurenam": "East Melbourne",
         "shape_area": "1909072.65637",
-        "shape_len": "6557.91424946"
+        "shape_len": "6557.91424946",
+        "data":{
+            "Accommodation and Food services": [65,68,68,63,63],
+            "Administrative and Support Services": [12,10,10,11,11],
+            "Agriculture, Forestry and Fishing": [1,0,0,1,1],
+            "Arts and Recreation Services": [23,24,24,21,22],
+            "Construction": [5,5,5,7,7],
+            "Education and Training": [12,13,13,13,13],
+            "Electricity, Gas, Water and Waste Services": [1,1,1,1,1],
+            "Financial and Insurance Services": [14,14,14,17,17],
+            "Health Care and Social Assistance": [235,239,239,238,238],
+            "Information Media and Telecommunications": [4,9,9,6,6],
+            "Manufacturing": [5,5,5,5,5],
+            "Other Services": [46,42,42,41,41],
+            "Professional, Scientific and Technical Services": [73,74,74,76,76],
+            "Public Administration and Safety": [22,20,9,19,19],
+            "Rental, Hiring and Real Estate Services": [10,9,11,7,7],
+            "Retail Trade": [13,11,2,12,12],
+            "Transport, Postal and Warehousing": [2,1,2,3,3],
+            "Wholesale Trade": [4,4,4,6,6]
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -5337,7 +5557,27 @@
       "properties": {
         "featurenam": "Carlton",
         "shape_area": "2724820.83121",
-        "shape_len": "9914.977304"
+        "shape_len": "9914.977304",
+        "data":{
+            "Accommodation and Food services": [245,273,273,269,269],
+            "Administrative and Support Services": [26,26,26,22,22],
+            "Agriculture, Forestry and Fishing": [2,1,1,0,0],
+            "Arts and Recreation Services": [23,22,22,23,28],
+            "Construction": [13,17,17,14,28],
+            "Education and Training": [83,86,86,78,78],
+            "Electricity, Gas, Water and Waste Services": [1,1,1,1,1],
+            "Financial and Insurance Services": [40,31,31,31,31],
+            "Health Care and Social Assistance": [101,108,108,112,112],
+            "Information Media and Telecommunications": [14,18,18,20,20],
+            "Manufacturing": [28,23,23,22,22],
+            "Other Services": [130,124,123,117,117],
+            "Professional, Scientific and Technical Services": [139,143,143,145,145],
+            "Public Administration and Safety": [17,16,16,14,14],
+            "Rental, Hiring and Real Estate Services": [22,20,20,30,30],
+            "Retail Trade": [144,127,127,121,121],
+            "Transport, Postal and Warehousing": [4,4,4,3,3],
+            "Wholesale Trade": [23,17,17,16,16]
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -5866,7 +6106,27 @@
       "properties": {
         "featurenam": "Melbourne (Remainder)",
         "shape_area": "2668300.95898",
-        "shape_len": "11399.6082458"
+        "shape_len": "11399.6082458",
+        "data":{
+            "Accommodation and Food services": [54,54,52,51,51],
+            "Administrative and Support Services": [21,21,12,12,10],
+            "Agriculture, Forestry and Fishing": [0,0,0,0,0],
+            "Arts and Recreation Services": [20,20,23,23,27],
+            "Construction": [10,10,8,8,8],
+            "Education and Training": [12,12,13,13,9],
+            "Electricity, Gas, Water and Waste Services": [1,1,1,1,1],
+            "Financial and Insurance Services": [35,35,25,25,22],
+            "Health Care and Social Assistance": [69,69,66,66,71],
+            "Information Media and Telecommunications": [6,6,3,3,1],
+            "Manufacturing": [8,8,8,8,4],
+            "Other Services": [19,19,15,15,13],
+            "Professional, Scientific and Technical Services": [66,66,57,57,33],
+            "Public Administration and Safety": [7,7,7,7,4],
+            "Rental, Hiring and Real Estate Services": [11,11,9,9,11],
+            "Retail Trade": [18,18,17,17,17],
+            "Transport, Postal and Warehousing": [6,6,5,5,6],
+            "Wholesale Trade": [7,7,8,8,7]
+        }
       },
       "geometry": {
         "type": "MultiPolygon",

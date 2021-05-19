@@ -33,12 +33,6 @@ h3 {
   font-size: 12px;
 }
 
-svg {
-  display: block;
-  overflow: visible;
-  cursor: pointer;
-}
-
 .text {
   font-size: 10px;
 }
@@ -50,4 +44,8 @@ svg {
 
 .layer rect:hover {
   opacity: 0.6;
+}
+
+.map {
+  margin-top: -50px;
 }
