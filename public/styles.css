@@ -18,6 +18,14 @@ section {
   position: relative;
 }
 
+.sectionTitle {
+  margin-bottom: 120px;
+  color: black;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+}
+
 h1 {
   text-align: center;
   font-size: 2.5rem;

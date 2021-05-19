@@ -1,6 +1,13 @@
-.sectionTwo {
+.sectionFour {
   padding: 100px;
   background-color: #e1e5ea;
+}
+.sectionTitle {
+  margin-bottom: 120px;
+  color: black;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
 }
 
 .containerTwo {
