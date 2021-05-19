@@ -42,3 +42,11 @@
   margin-right: 5px;
   transform: rotate(30deg);
 }
+
+.lineDesc {
+  font-size: 12px;
+  margin-bottom: 40px;
+  margin-left: -10px;
+  width: 300px;
+  line-height: 15px;
+}

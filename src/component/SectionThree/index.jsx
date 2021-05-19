@@ -146,13 +146,13 @@ const LineChart = (props) => {
   const length = Object.keys(lineData[0]).length;
   useEffect(() => {
     const margin = { top: 30, right: 0, bottom: 10, left: 30 };
-    const width = 350 - margin.left - margin.right;
-    const height = 350 - margin.top - margin.top;
+    const width = 300 - margin.left - margin.right;
+    const height = 300 - margin.top - margin.top;
     const svg = d3.select(svgRef.current);
 
     svg
-      .attr("width", 350)
-      .attr("height", 350)
+      .attr("width", 300)
+      .attr("height", 300)
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -183,18 +183,17 @@ const LineChart = (props) => {
         .data([lineData])
         .join("path")
         .attr("class", "line-path1")
-        .attr("transform", "translate(" + 50 + ",0)")
+        .attr("transform", "translate(" + 30 + ",0)")
         .attr("d", entryPath)
         .attr("fill", "none")
         .attr("stroke-width", 3)
         .attr("stroke", "steelblue");
-
       svg
         .selectAll(".line-path2")
         .data([lineData])
         .join("path")
         .attr("class", "line-path2")
-        .attr("transform", "translate(" + 50 + ",0)")
+        .attr("transform", "translate(" + 30 + ",0)")
         .attr("d", exitPath)
         .attr("fill", "none")
         .attr("stroke-width", 3)
@@ -254,32 +253,32 @@ const LineChart = (props) => {
         .text("exit rate")
         .style("font-size", "10px");
 
-      const focus = svg
-        .append("g")
-        .attr("class", "focus")
-        .style("display", "none");
+      // const focus = svg
+      //   .append("g")
+      //   .attr("class", "focus")
+      //   .style("display", "none");
 
-      focus
-        .append("circle")
-        .attr("class", "y1")
-        .style("fill", "none")
-        .style("stroke", "red")
-        .attr("r", 4);
+      // focus
+      //   .append("circle")
+      //   .attr("class", "y1")
+      //   .style("fill", "none")
+      //   .style("stroke", "red")
+      //   .attr("r", 4);
 
-      focus
-        .append("circle")
-        .attr("class", "y2")
-        .style("fill", "none")
-        .style("stroke", "red")
-        .attr("r", 4);
+      // focus
+      //   .append("circle")
+      //   .attr("class", "y2")
+      //   .style("fill", "none")
+      //   .style("stroke", "red")
+      //   .attr("r", 4);
 
-      focus
-        .append("line")
-        .attr("class", "x-hover-line hover-line")
-        .attr("y1", 0)
-        .style("stroke", "#6F257F")
-        .style("stroke-width", 3)
-        .attr("y2", height);
+      // focus
+      //   .append("line")
+      //   .attr("class", "x-hover-line hover-line")
+      //   .attr("y1", 0)
+      //   .style("stroke", "#6F257F")
+      //   .style("stroke-width", 3)
+      //   .attr("y2", height);
 
       // focus
       //   .append("line")
@@ -290,51 +289,55 @@ const LineChart = (props) => {
       //   .style("stroke", "red")
       //   .style("stroke-width", 3);
 
-      focus.append("text").attr("x", 15).attr("dy", ".31em");
+      // focus.append("text").attr("x", 15).attr("dy", ".31em");
 
-      svg
-        .append("rect")
-        .attr("class", "overlay")
-        .style("fill", "none")
-        .attr("width", width)
-        .attr("height", height + 10)
-        .style("opacity", 0)
-        .style("fill", "red")
-        .on("mouseover", () => {
-          console.log("over");
-          d3.select(".focus").style("display", "block");
-        })
-        .on("mouseout", () => {
-          focus.style("display", "none");
-        })
-        .on("mousemove", (e) => mousemove(e));
+      // svg
+      //   .append("rect")
+      //   .attr("class", "overlay")
+      //   .style("fill", "none")
+      //   .attr("width", width)
+      //   .attr("height", height + 10)
+      //   .style("opacity", 0)
+      //   .style("fill", "red")
+      //   .on("mouseover", () => {
+      //     console.log("over");
+      //     d3.select(".focus").style("display", "block");
+      //   })
+      //   .on("mouseout", () => {
+      //     focus.style("display", "none");
+      //   })
+      //   .on("mousemove", (e) => mousemove(e));
 
-      function mousemove(e) {
-        const eachBand = xScale.step();
-        const index = Math.round(e.x / eachBand) - 6;
-        console.log(index);
-        //  const val = xScale.domain()[index];
-        // const bisectX = d3.bisector(d => d[0]).left;
-        // const x0 = xScale.invert(d3.pointer(e)[0]),
-        //   i = bisectX(data, x0, 1),
-        //   d0 = data[i - 1],
-        //   d1 = data[i],
-        //   d = x0 - d0.year > d1.year - x0 ? d1 : d0;
-        // console.log(x0, i, d1, d);
-        // focus.attr(
-        //   "transform",
-        //   "translate(" + x(d.year) + "," + y(d.value) + ")"
-        // );
-        // focus.select("text").text(function () {
-        //   return d.value;
-        // });
-        focus.select(".x-hover-line").attr("y2", height);
-        focus.select(".y-hover-line").attr("x2", width + width);
-      }
+      // function mousemove(e) {
+      //   const eachBand = xScale.step();
+      //   const index = Math.round(e.x / eachBand) - 6;
+      //   console.log(index);
+      //  const val = xScale.domain()[index];
+      // const bisectX = d3.bisector(d => d[0]).left;
+      // const x0 = xScale.invert(d3.pointer(e)[0]),
+      //   i = bisectX(data, x0, 1),
+      //   d0 = data[i - 1],
+      //   d1 = data[i],
+      //   d = x0 - d0.year > d1.year - x0 ? d1 : d0;
+      // console.log(x0, i, d1, d);
+      // focus.attr(
+      //   "transform",
+      //   "translate(" + x(d.year) + "," + y(d.value) + ")"
+      // );
+      // focus.select("text").text(function () {
+      //   return d.value;
+      // });
+      // focus.select(".x-hover-line").attr("y2", height);
+      // focus.select(".y-hover-line").attr("x2", width + width);
+      //   }
     }
   }, [lineData, industry, length]);
   return (
     <>
+      <div className="lineDesc">
+        {industry} {industry && industry.length > 20 ? <br /> : null}
+        grows 10% from 2016 to 2017
+      </div>
       <svg ref={svgRef}>
         <g className="x-axis" />
         <g className="y-axis" />
