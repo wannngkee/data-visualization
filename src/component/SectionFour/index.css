@@ -10,13 +10,15 @@
   text-align: center;
 }
 
-.containerTwo {
+.containerFour {
   display: flex;
   justify-content: space-around;
 }
 
 .right {
-  margin-top: -60px;
+  /* margin-top: -60px; */
+  flex: 1;
+  margin-left: 10%;
 }
 
 .desc {
@@ -25,12 +27,6 @@
 
 h3 {
   font-weight: bold;
-  /* color: #28527a; */
-}
-
-.options {
-  margin-top: 30px;
-  font-size: 12px;
 }
 
 .text {
@@ -42,10 +38,27 @@ h3 {
   letter-spacing: normal;
 }
 
-.layer rect:hover {
-  opacity: 0.6;
+svg .area:hover {
+  stroke: #fff;
+  opacity: 0.9;
+  stroke-width: 2px;
+  cursor: pointer;
 }
 
-.map {
-  margin-top: -50px;
+.hoverhint {
+  display: flex;
+  font-size: 10px;
+  left: 30%;
+  width: 50%;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  opacity: 1;
+  transition: all 0.5s ease;
+  color: #04009a;
+}
+
+.hoverIcon {
+  font-size: 16px;
+  margin-left: 5px;
+  transform: rotate(330deg);
 }

@@ -10,10 +10,19 @@
 .titleBlock {
   position: absolute;
   bottom: 75%;
+  height: 80px;
+  display: flex;
+  align-items: center;
   background-color: rgba(0, 0, 0, 80%);
-  color: white;
   padding-left: 50px;
   padding-right: 50px;
+}
+
+.titleBlock h1 {
+  color: white;
+  font-weight: 800;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .descBlock {
