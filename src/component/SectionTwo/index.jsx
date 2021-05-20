@@ -33,11 +33,14 @@ const BarChart = (props) => {
   const { keys, colors } = props;
   const svgRef = useRef();
   const margin = { top: 20, right: 160, bottom: 35, left: 30 };
-  const width = 500 - margin.left - margin.right;
-  const height = 500 - margin.top - margin.bottom;
+  const width = 450 - margin.left - margin.right;
+  const height = 450 - margin.top - margin.bottom;
   useEffect(() => {
     const svg = d3.select(svgRef.current);
-    svg.attr("width", 500).attr("height", 500);
+    svg
+      .attr("width", 450)
+      .attr("height", 450)
+      .attr("transfrom", `${margin.left},${margin.top}`);
     const stackGenerator = d3.stack().keys(keys).order(stackOrderDescending);
     const layers = stackGenerator(businessData.data);
     const extent = [

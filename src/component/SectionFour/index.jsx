@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Button } from "antd";
+import { Slider } from "antd";
 import * as d3 from "d3";
 import areaMap from "../../data/areas.json";
 import { svg } from "d3";
@@ -10,11 +10,11 @@ const Map = (props) => {
   const { setArea } = props;
   const [selectedArea, setSelectedArea] = useState(null);
   const svgRef = useRef();
-  const width = 500;
-  const height = 500;
+  const width = 400;
+  const height = 400;
   useEffect(() => {
     const svg = d3.select(svgRef.current);
-    svg.attr("width", 500).attr("height", 500);
+    svg.attr("width", 400).attr("height", 400);
     const projection = d3
       .geoMercator()
       .fitSize([width, height], areaMap)
@@ -88,9 +88,9 @@ const SectionFour = () => {
   const [areaInfo, setArea] = useState([]);
   const marks = {
     0: "2016",
-    1: "2017",
-    2: "2018",
-    3: "2019",
+    10: "2017",
+    20: "2018",
+    30: "2019",
   };
   return (
     <>
@@ -98,8 +98,14 @@ const SectionFour = () => {
         <div className="sectionTitle">
           <h1>Changes on Industry Distribution</h1>
           <p>A map walkthrough</p>
-          {/* <Slider marks={marks} defaultValue={1} /> */}
-          <Button type="primary">button</Button>
+          <Slider
+            max={30}
+            style={{ width: 200, marginTop: 30 }}
+            marks={marks}
+            step={null}
+            defaultValue={0}
+            tipFormatter={null}
+          />
         </div>
         <div className="hoverhint">
           Hover for more details{" "}

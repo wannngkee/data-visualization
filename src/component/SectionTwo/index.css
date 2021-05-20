@@ -1,5 +1,5 @@
 .sectionTwo {
-  padding: 100px;
+  padding: 40px 100px;
   background-color: #e1e5ea;
 }
 
@@ -9,33 +9,44 @@
 }
 
 .right {
-  margin-top: -60px;
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.desc {
-  margin-bottom: 60px;
+.options {
+  margin-top: -30px;
+}
+
+.chart {
+  padding: 50px;
 }
 
 h3 {
   font-weight: bold;
-  /* color: #28527a; */
 }
 
-.options {
-  margin-top: 30px;
-  font-size: 12px;
+.ant-checkbox-wrapper {
+  font-size: 11px;
 }
 
 svg {
   display: block;
-  overflow: visible;
   cursor: pointer;
+}
+
+svg:not(:root) {
+  overflow: visible;
 }
 
 .text {
   font-size: 10px;
 }
 
+hr {
+  width: 300px;
+}
 .number {
   background-color: #94b5c0;
   letter-spacing: normal;

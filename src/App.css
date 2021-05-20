@@ -16,7 +16,8 @@ code {
 section {
   height: 100vh;
   position: relative;
-  box-sizing: content-box;
+  box-sizing: border-box;
+  /* box-sizing: content-box; */
 }
 
 .sectionTitle {
@@ -45,8 +46,4 @@ h1 {
   display: none;
   font-size: 11px;
   border: 1px solid #555;
-}
-
-svg:not(:root) {
-  overflow: visible;
 }
