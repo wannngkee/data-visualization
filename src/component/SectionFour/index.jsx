@@ -1,13 +1,13 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Slider } from "antd";
+import { Button, Slider } from "antd";
 import * as d3 from "d3";
 import areaMap from "../../data/areas.json";
 import { svg } from "d3";
-import { FaRegHandPointDown } from "react-icons/fa";
+import { FaRegHandPointRight } from "react-icons/fa";
 import "./index.css";
 
 const Map = (props) => {
-  const { setArea } = props;
+  const { setArea, year } = props;
   const [selectedArea, setSelectedArea] = useState(null);
   const svgRef = useRef();
   const width = 400;
@@ -27,7 +27,7 @@ const Map = (props) => {
       areaMap.features.forEach((feature) => {
         let total = 0;
         allIndustries.forEach((industry) => {
-          total += feature.properties.data[industry][1];
+          total += feature.properties.data[industry][year];
         });
         number.push(total);
       });
@@ -37,7 +37,7 @@ const Map = (props) => {
     const areaTotal = (feature) => {
       let total = 0;
       allIndustries.forEach((industry) => {
-        total += feature.properties.data[industry][1];
+        total += feature.properties.data[industry][year];
       });
       return total;
     };
@@ -76,7 +76,7 @@ const Map = (props) => {
       .on("mouseout", (e, feature) => {
         d3.select(".hoverhint").style("opacity", 1);
       });
-  }, [setArea, selectedArea]);
+  }, [setArea, selectedArea, year]);
   return (
     <>
       <svg ref={svgRef} />
@@ -86,11 +86,24 @@ const Map = (props) => {
 
 const SectionFour = () => {
   const [areaInfo, setArea] = useState([]);
+  const [slider, setSlider] = useState(0);
+  const [show, setShow] = useState(false);
   const marks = {
     0: "2016",
     10: "2017",
     20: "2018",
     30: "2019",
+  };
+  const handleClick = () => {
+    setSlider(0);
+    let count = 0;
+    let timer = setInterval(() => {
+      setSlider((pre) => pre + 10);
+      count++;
+      if (count === 3) {
+        clearInterval(timer);
+      }
+    }, 500);
   };
   return (
     <>
@@ -98,25 +111,48 @@ const SectionFour = () => {
         <div className="sectionTitle">
           <h1>Changes on Industry Distribution</h1>
           <p>A map walkthrough</p>
-          <Slider
-            max={30}
-            style={{ width: 200, marginTop: 30 }}
-            marks={marks}
-            step={null}
-            defaultValue={0}
-            tipFormatter={null}
-          />
+          <div className="interaction">
+            <div className="hoverhint" style={{ opacity: show ? 1 : 0 }}>
+              Slide to select a year{" "}
+              <FaRegHandPointRight className="hoverIcon" />
+            </div>
+            <div
+              onMouseEnter={() => setShow(true)}
+              onMouseLeave={() => setShow(false)}
+            >
+              <Slider
+                max={30}
+                style={{ width: 200 }}
+                marks={marks}
+                step={null}
+                value={slider}
+                tipFormatter={null}
+                onChange={(value) => {
+                  setSlider(value);
+                }}
+              />
+            </div>
+            <Button
+              type="primary"
+              ghost
+              size="small"
+              style={{ marginTop: 10 }}
+              onClick={handleClick}
+            >
+              Auto Play
+            </Button>
+          </div>
         </div>
-        <div className="hoverhint">
-          Hover for more details{" "}
+        {/* <div className="hoverhint">
           <FaRegHandPointDown
             className="hoverIcon"
             style={{ display: "inline-block" }}
           />
-        </div>
+          Hover for more details
+        </div> */}
         <div className="containerFour">
           <div className="left">
-            <Map setArea={setArea} />
+            <Map setArea={setArea} year={slider / 10} />
           </div>
           <div className="right">
             <div className="desc">
@@ -126,7 +162,7 @@ const SectionFour = () => {
                     Area Name: <span className="number">{areaInfo[0]}</span>
                   </h3>
                   <h3>
-                    Count Change:{" "}
+                    Count Change Since 2015:{" "}
                     <span className="number">
                       {areaInfo[1] > 0 ? `+${areaInfo[1]}` : areaInfo[1]}
                     </span>
