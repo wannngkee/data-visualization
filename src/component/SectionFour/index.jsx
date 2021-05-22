@@ -1,13 +1,14 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Button, Slider } from "antd";
+import { Button, Slider, Select, Tag } from "antd";
 import * as d3 from "d3";
 import areaMap from "../../data/areas.json";
 import { svg } from "d3";
 import { FaRegHandPointRight } from "react-icons/fa";
 import "./index.css";
 
+const allIndustries = Object.keys(areaMap.features[0].properties.data);
 const Map = (props) => {
-  const { setArea, year } = props;
+  const { setArea, year, industries } = props;
   const [selectedArea, setSelectedArea] = useState(null);
   const svgRef = useRef();
   const width = 400;
@@ -20,13 +21,12 @@ const Map = (props) => {
       .fitSize([width, height], areaMap)
       .precision(100);
     const geoGenerator = d3.geoPath().projection(projection);
-    const allIndustries = Object.keys(areaMap.features[0].properties.data);
 
     const data = () => {
       const number = [];
       areaMap.features.forEach((feature) => {
         let total = 0;
-        allIndustries.forEach((industry) => {
+        industries.forEach((industry) => {
           total += feature.properties.data[industry][year];
         });
         number.push(total);
@@ -36,7 +36,7 @@ const Map = (props) => {
 
     const areaTotal = (feature) => {
       let total = 0;
-      allIndustries.forEach((industry) => {
+      industries.forEach((industry) => {
         total += feature.properties.data[industry][year];
       });
       return total;
@@ -69,14 +69,10 @@ const Map = (props) => {
       .attr("stroke", "#333")
       .attr("d", (feature) => geoGenerator(feature))
       .on("mouseover", (e, feature) => {
-        d3.select(".hoverhint").style("opacity", 0);
         setSelectedArea(selectedArea === feature ? null : feature);
         setArea([feature.properties.featurenam, areaTotal(feature)]);
-      })
-      .on("mouseout", (e, feature) => {
-        d3.select(".hoverhint").style("opacity", 1);
       });
-  }, [setArea, selectedArea, year]);
+  }, [setArea, selectedArea, year, industries]);
   return (
     <>
       <svg ref={svgRef} />
@@ -88,12 +84,37 @@ const SectionFour = () => {
   const [areaInfo, setArea] = useState([]);
   const [slider, setSlider] = useState(0);
   const [show, setShow] = useState(false);
+  const [selection, setSelection] = useState(allIndustries);
   const marks = {
     0: "2016",
     10: "2017",
     20: "2018",
     30: "2019",
   };
+  const options = [
+    { value: "Accommodation and Food services" },
+    { value: "Administrative and Support Services" },
+    { value: "Agriculture, Forestry and Fishing" },
+    { value: "Arts and Recreation Services" },
+    { value: "Construction" },
+    {
+      value: "Education and Training",
+    },
+    { value: "Electricity, Gas, Water and Waste Services" },
+    { value: "Financial and Insurance Services" },
+    { value: "Health Care and Social Assistance" },
+    { value: "Information Media and Telecommunications" },
+    { value: "Manufacturing" },
+    { value: "Other Services" },
+    {
+      value: "Professional, Scientific and Technical Services",
+    },
+    { value: "Public Administration and Safety" },
+    { value: "Rental, Hiring and Real Estate Services" },
+    { value: "Retail Trade" },
+    { value: "Transport, Postal and Warehousing" },
+    { value: "Wholesale Trade" },
+  ];
   const handleClick = () => {
     setSlider(0);
     let count = 0;
@@ -111,15 +132,18 @@ const SectionFour = () => {
         <div className="sectionTitle">
           <h1>Changes on Industry Distribution</h1>
           <p>A map walkthrough</p>
-          <div className="interaction">
-            <div className="hoverhint" style={{ opacity: show ? 1 : 0 }}>
-              Slide to select a year{" "}
-              <FaRegHandPointRight className="hoverIcon" />
-            </div>
+        </div>
+        <div className="containerFour">
+          <div className="left" style={{ marginRight: 50 }}>
             <div
-              onMouseEnter={() => setShow(true)}
-              onMouseLeave={() => setShow(false)}
+              className="interaction"
+              onMouseOver={() => setShow(true)}
+              onMouseOut={() => setShow(false)}
             >
+              <div className="hoverhint" style={{ opacity: show ? 1 : 0 }}>
+                Slide to select a year{" "}
+                <FaRegHandPointRight className="hoverIcon" />
+              </div>
               <Slider
                 max={30}
                 style={{ width: 200 }}
@@ -131,44 +155,85 @@ const SectionFour = () => {
                   setSlider(value);
                 }}
               />
+              <Button
+                type="primary"
+                ghost
+                size="small"
+                style={{
+                  marginTop: 10,
+                  fontSize: 11,
+                  borderColor: "#04009a",
+                  color: "#04009a",
+                }}
+                onClick={handleClick}
+              >
+                Auto Play
+              </Button>
             </div>
-            <Button
-              type="primary"
-              ghost
-              size="small"
-              style={{ marginTop: 10 }}
-              onClick={handleClick}
+            <Map setArea={setArea} year={slider / 10} industries={selection} />
+          </div>
+          <div className="right" style={{ marginTop: 30 }}>
+            <div
+              className="desc"
+              style={{
+                visibility: areaInfo.length > 0 ? "visible" : "hidden",
+                marginBottom: 20,
+              }}
             >
-              Auto Play
-            </Button>
-          </div>
-        </div>
-        {/* <div className="hoverhint">
-          <FaRegHandPointDown
-            className="hoverIcon"
-            style={{ display: "inline-block" }}
-          />
-          Hover for more details
-        </div> */}
-        <div className="containerFour">
-          <div className="left">
-            <Map setArea={setArea} year={slider / 10} />
-          </div>
-          <div className="right">
-            <div className="desc">
-              {areaInfo.length > 0 ? (
-                <>
-                  <h3>
-                    Area Name: <span className="number">{areaInfo[0]}</span>
-                  </h3>
-                  <h3>
-                    Count Change Since 2015:{" "}
-                    <span className="number">
-                      {areaInfo[1] > 0 ? `+${areaInfo[1]}` : areaInfo[1]}
-                    </span>
-                  </h3>
-                </>
-              ) : null}
+              <h3>
+                Area Name: <span className="number">{areaInfo[0]}</span>
+              </h3>
+              <h3>
+                Count Change Since 2015:{" "}
+                <span className="number">
+                  {areaInfo[1] > 0 ? `+${areaInfo[1]}` : areaInfo[1]}
+                </span>
+              </h3>
+            </div>
+            <div style={{ color: "#04009a", fontWeight: "bold" }}>
+              Selected Industries
+            </div>
+            <div style={{ display: "flex" }}>
+              <Button
+                style={{
+                  flex: 1,
+                  fontSize: 11,
+                  color: "#04009a",
+                }}
+                onClick={() => {
+                  setSelection([]);
+                }}
+              >
+                Clear All
+              </Button>
+              <Button
+                style={{
+                  flex: 1,
+                  fontSize: 11,
+                  color: "#04009a",
+                }}
+                onClick={() => {
+                  setSelection(allIndustries);
+                }}
+              >
+                Select All
+              </Button>
+            </div>
+            <div className="selections">
+              <Select
+                mode="multiple"
+                size="large"
+                value={selection}
+                options={options}
+                onChange={(value) => {
+                  setSelection(value);
+                }}
+                style={{
+                  width: 520,
+                  fontSize: 11,
+                  backgroundColor: "transparent",
+                }}
+              ></Select>
             </div>
           </div>
         </div>
