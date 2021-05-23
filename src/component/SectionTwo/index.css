@@ -16,6 +16,10 @@
   text-align: center;
 }
 
+.left {
+  display: flex;
+  flex-direction: column;
+}
 .right {
   margin-top: 5px;
   display: flex;

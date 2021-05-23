@@ -32,15 +32,15 @@ svg .area:hover {
   margin-top: 30px;
   margin-bottom: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .hoverhint {
   font-size: 10px;
   width: 40%;
   display: flex;
-  margin-left: -80px;
-  margin-right: -30px;
+  margin-left: -50px;
+  margin-top: -20px;
   transition: all 0.5s ease;
   color: #04009a;
 }
@@ -48,16 +48,16 @@ svg .area:hover {
 .hoverIcon {
   font-size: 16px;
   margin-left: 5px;
-  transform: rotate(30deg);
+  transform: rotate(40deg);
 }
 
 .ant-slider-mark-text {
   font-size: 12px;
 }
 
-.btn {
-  flex: 1;
-  font-size: 11px;
-  border-color: "#04009a";
-  background-color: "transparent";
+.legend {
+  font-size: 10px;
+  margin-top: 15px;
+  color: #04009a;
+  margin-left: 10%;
 }

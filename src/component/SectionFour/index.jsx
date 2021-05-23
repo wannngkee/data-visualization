@@ -1,9 +1,10 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Button, Slider, Select, Tag } from "antd";
+import { Button, Slider, Select } from "antd";
 import * as d3 from "d3";
 import areaMap from "../../data/areas.json";
 import { svg } from "d3";
 import { FaRegHandPointRight } from "react-icons/fa";
+import legend from "./legend.png";
 import "./index.css";
 
 const allIndustries = Object.keys(areaMap.features[0].properties.data);
@@ -129,7 +130,7 @@ const SectionFour = () => {
   return (
     <>
       <section className="sectionFour">
-        <div className="sectionTitle">
+        <div className="sectionTitle" style={{ marginBottom: 0 }}>
           <h1>Changes on Industry Distribution</h1>
           <p>A map walkthrough</p>
         </div>
@@ -146,7 +147,7 @@ const SectionFour = () => {
               </div>
               <Slider
                 max={30}
-                style={{ width: 200 }}
+                style={{ width: 200, marginRight: 50, marginLeft: -80 }}
                 marks={marks}
                 step={null}
                 value={slider}
@@ -171,6 +172,20 @@ const SectionFour = () => {
               </Button>
             </div>
             <Map setArea={setArea} year={slider / 10} industries={selection} />
+            <div className="legend">
+              Decrease
+              <img
+                src={legend}
+                alt="legend"
+                style={{
+                  width: "40%",
+                  height: 20,
+                  marginLeft: 10,
+                  marginRight: 10,
+                }}
+              />
+              Increase
+            </div>
           </div>
           <div className="right" style={{ marginTop: 30 }}>
             <div
@@ -190,7 +205,9 @@ const SectionFour = () => {
                 </span>
               </h3>
             </div>
-            <div style={{ color: "#04009a", fontWeight: "bold" }}>
+            <div
+              style={{ color: "#04009a", fontWeight: "bold", marginBottom: 5 }}
+            >
               Selected Industries
             </div>
             <div style={{ display: "flex" }}>
