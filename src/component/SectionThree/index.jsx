@@ -25,7 +25,6 @@ const BarChart = () => {
       Math.ceil((data.length + 0.1) * barHeight) + margin.top + margin.bottom;
     const svg = d3.select(svgRef.current);
     svg.attr("width", 450).attr("height", height).append("g");
-
     const xScale = d3
       .scaleLinear()
       .domain([0, d3.max(data, (d) => d.growth)])
@@ -64,6 +63,7 @@ const BarChart = () => {
         d3.selectAll(".industryBar rect").attr("fill", "steelblue");
         d3.select(e.target).attr("fill", "#325288");
         d3.select(".lineChart").style("display", "block");
+        d3.select(".linehover").style("opacity", 1);
       })
       .on("mouseout", () => {
         d3.select(".hint").style("opacity", 0);
@@ -144,6 +144,8 @@ const LineChart = (props) => {
   const { lineData, industry } = props;
   const svgRef = useRef();
   const length = Object.keys(lineData[0]).length;
+  const [current, setCurrent] = useState();
+
   useEffect(() => {
     const margin = { top: 30, right: 0, bottom: 10, left: 30 };
     const width = 300 - margin.left - margin.right;
@@ -169,21 +171,21 @@ const LineChart = (props) => {
       const entryPath = d3
         .line()
         .x((d) => xScale(d.year))
-        .y((d) => yScale(d.entry));
-      // .curve(d3.curveMonotoneX);
+        .y((d) => yScale(d.entry))
+        .curve(d3.curveMonotoneX);
 
       const exitPath = d3
         .line()
         .x((d) => xScale(d.year))
-        .y((d) => yScale(d.exit));
-      // .curve(d3.curveMonotoneX);
+        .y((d) => yScale(d.exit))
+        .curve(d3.curveMonotoneX);
 
       svg
         .selectAll(".line-path1")
         .data([lineData])
         .join("path")
         .attr("class", "line-path1")
-        .attr("transform", "translate(" + 30 + ",0)")
+        .attr("transform", "translate(" + 32 + ",0)")
         .attr("d", entryPath)
         .attr("fill", "none")
         .attr("stroke-width", 3)
@@ -193,7 +195,7 @@ const LineChart = (props) => {
         .data([lineData])
         .join("path")
         .attr("class", "line-path2")
-        .attr("transform", "translate(" + 30 + ",0)")
+        .attr("transform", "translate(" + 32 + ",0)")
         .attr("d", exitPath)
         .attr("fill", "none")
         .attr("stroke-width", 3)
@@ -253,90 +255,93 @@ const LineChart = (props) => {
         .text("exit rate")
         .style("font-size", "10px");
 
-      // const focus = svg
-      //   .append("g")
-      //   .attr("class", "focus")
-      //   .style("display", "none");
+      var mouseG = svg.append("g").attr("class", "mouse-over-effects");
 
-      // focus
-      //   .append("circle")
-      //   .attr("class", "y1")
-      //   .style("fill", "none")
-      //   .style("stroke", "red")
-      //   .attr("r", 4);
+      mouseG
+        .append("path")
+        .attr("class", "mouse-line")
+        .style("stroke", "#aaa")
+        .style("stroke-width", "2px")
+        .style("opacity", "0");
 
-      // focus
-      //   .append("circle")
-      //   .attr("class", "y2")
-      //   .style("fill", "none")
-      //   .style("stroke", "red")
-      //   .attr("r", 4);
+      svg
+        .append("rect")
+        .attr("class", "overlay")
+        .style("fill", "none")
+        .attr("width", width)
+        .attr("height", height + 10)
+        .style("opacity", 0)
+        .style("fill", "red")
+        .on("mouseover", () => {
+          d3.select(".mouse-line").style("opacity", 1);
+          d3.select(".linehover").style("opacity", 0);
+        })
+        .on("mouseout", () => {
+          d3.select(".mouse-line").style("opacity", 0);
+          d3.select(".linehover").style("opacity", 1);
+        })
+        .on("mousemove", (e) => mousemove(e));
 
-      // focus
-      //   .append("line")
-      //   .attr("class", "x-hover-line hover-line")
-      //   .attr("y1", 0)
-      //   .style("stroke", "#6F257F")
-      //   .style("stroke-width", 3)
-      //   .attr("y2", height);
-
-      // focus
-      //   .append("line")
-      //   .attr("class", "y-hover-line hover-line")
-      //   .attr("x1", 0)
-      //   .attr("x2", width / 2)
-      //   .attr("y", 20)
-      //   .style("stroke", "red")
-      //   .style("stroke-width", 3);
-
-      // focus.append("text").attr("x", 15).attr("dy", ".31em");
-
-      // svg
-      //   .append("rect")
-      //   .attr("class", "overlay")
-      //   .style("fill", "none")
-      //   .attr("width", width)
-      //   .attr("height", height + 10)
-      //   .style("opacity", 0)
-      //   .style("fill", "red")
-      //   .on("mouseover", () => {
-      //     console.log("over");
-      //     d3.select(".focus").style("display", "block");
-      //   })
-      //   .on("mouseout", () => {
-      //     focus.style("display", "none");
-      //   })
-      //   .on("mousemove", (e) => mousemove(e));
-
-      // function mousemove(e) {
-      //   const eachBand = xScale.step();
-      //   const index = Math.round(e.x / eachBand) - 6;
-      //   console.log(index);
-      //  const val = xScale.domain()[index];
-      // const bisectX = d3.bisector(d => d[0]).left;
-      // const x0 = xScale.invert(d3.pointer(e)[0]),
-      //   i = bisectX(data, x0, 1),
-      //   d0 = data[i - 1],
-      //   d1 = data[i],
-      //   d = x0 - d0.year > d1.year - x0 ? d1 : d0;
-      // console.log(x0, i, d1, d);
-      // focus.attr(
-      //   "transform",
-      //   "translate(" + x(d.year) + "," + y(d.value) + ")"
-      // );
-      // focus.select("text").text(function () {
-      //   return d.value;
-      // });
-      // focus.select(".x-hover-line").attr("y2", height);
-      // focus.select(".y-hover-line").attr("x2", width + width);
-      //   }
+      function mousemove(e) {
+        const mouse = d3.pointer(e);
+        const eachBand = xScale.step();
+        const index = Math.round(mouse[0] / eachBand);
+        const val = xScale.domain()[index];
+        const data = lineData.find((obj) => obj.year === val);
+        console.log(data);
+        setCurrent(data);
+        d3.select(".mouse-line").attr("d", function () {
+          var d = "M" + mouse[0] + "," + height;
+          d += " " + mouse[0] + "," + 0;
+          return d;
+        });
+      }
     }
   }, [lineData, industry, length]);
   return (
     <>
-      <div className="lineDesc">
-        {industry} {industry && industry.length > 20 ? <br /> : null}
-        grows 10% from 2016 to 2017
+      <div style={{ display: "flex" }}>
+        <div className="lineDesc" style={{ height: 50 }}>
+          {current && (
+            <>
+              <span>
+                Industry: {industry} <br />
+              </span>
+              <span>
+                Entry rate:{" "}
+                <span
+                  style={{
+                    textDecoration: "underline",
+                    textDecorationColor: "#94b5c0",
+                  }}
+                >
+                  {current.entry.toFixed(2)}%{" "}
+                </span>
+                <br />
+                Exit rate:{" "}
+                <span
+                  style={{
+                    textDecoration: "underline",
+                    textDecorationColor: "#94b5c0",
+                  }}
+                >
+                  {current.exit.toFixed(2)}%{" "}
+                </span>
+                <br />
+                {current.entry - current.exit >= 0 ? "Grows " : "Drops "}
+                {(current.entry - current.exit).toFixed(2)}% from{" "}
+                {current.year - 1} to {current.year}
+              </span>
+            </>
+          )}
+        </div>
+        <div className="linehover">
+          <FaRegHandPointDown
+            className="hoverIcon"
+            style={{ marginRight: 5 }}
+          />
+          Hover for more details
+        </div>
       </div>
       <svg ref={svgRef}>
         <g className="x-axis" />

@@ -43,6 +43,7 @@ svg .area:hover {
   margin-top: -20px;
   transition: all 0.5s ease;
   color: #04009a;
+  opacity: 0;
 }
 
 .hoverIcon {
