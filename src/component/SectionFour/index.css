@@ -30,6 +30,7 @@ svg .area:hover {
 
 .interaction {
   margin-top: 30px;
+  margin-left: 50px;
   margin-bottom: 10px;
   display: flex;
   justify-content: flex-start;
@@ -37,13 +38,11 @@ svg .area:hover {
 
 .hoverhint {
   font-size: 10px;
-  width: 40%;
+  width: 150px;
   display: flex;
-  margin-left: -50px;
   margin-top: -20px;
   transition: all 0.5s ease;
   color: #04009a;
-  opacity: 0;
 }
 
 .hoverIcon {

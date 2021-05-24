@@ -13,10 +13,10 @@ const Map = (props) => {
   const [selectedArea, setSelectedArea] = useState(null);
   const svgRef = useRef();
   const width = 400;
-  const height = 400;
+  const height = 380;
   useEffect(() => {
     const svg = d3.select(svgRef.current);
-    svg.attr("width", 400).attr("height", 400);
+    svg.attr("width", width).attr("height", height);
     const projection = d3
       .geoMercator()
       .fitSize([width, height], areaMap)
@@ -147,7 +147,7 @@ const SectionFour = () => {
               </div>
               <Slider
                 max={30}
-                style={{ width: 200, marginRight: 50, marginLeft: -80 }}
+                style={{ width: 200, marginRight: 40, marginLeft: -120 }}
                 marks={marks}
                 step={null}
                 value={slider}
@@ -178,7 +178,7 @@ const SectionFour = () => {
                 src={legend}
                 alt="legend"
                 style={{
-                  width: "40%",
+                  width: 200,
                   height: 20,
                   marginLeft: 10,
                   marginRight: 10,
