@@ -1,0 +1,9 @@
+.sectionSix {
+  padding: 40px 100px;
+  background-color: #e1e5ea;
+}
+
+.containerSix {
+  display: flex;
+  justify-content: space-around;
+}

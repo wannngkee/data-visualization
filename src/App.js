@@ -7,6 +7,7 @@ import SectionTwo from "./component/SectionTwo/index";
 import SectionThree from "./component/SectionThree/index";
 import SectionFour from "./component/SectionFour/index";
 import SectionFive from "./component/SectionFive/index";
+import SectionSix from "./component/SectionSix/index";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <SectionThree />
       <SectionFour />
       <SectionFive />
+      <SectionSix />
       <BackTop style={{ opacity: 0.8, marginRight: -60 }}>
         <RiArrowUpSLine className="backTop" />
       </BackTop>
