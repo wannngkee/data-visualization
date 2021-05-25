@@ -172,8 +172,8 @@ const SectionTwo = () => {
     <>
       <section className="sectionTwo">
         <div className="sectionTitle">
-          <h1>Business Market Overview</h1>
-          <p>From 2015 to 2019</p>
+          <h1>Business market Overview</h1>
+          <h4>From 2015 to 2019</h4>
         </div>
         <div className="containerTwo">
           <div className="left">

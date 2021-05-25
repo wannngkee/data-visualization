@@ -13,10 +13,10 @@ const SectionOne = () => {
         <h1>Plan Your Business in Melbourne</h1>
       </div>
       <div className="descBlock">
-        <p>
+        <h4>
           Find Out the Thriving Industies and the Perfect Locations To Start
           With.
-        </p>
+        </h4>
       </div>
     </section>
   );
