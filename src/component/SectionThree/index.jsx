@@ -268,7 +268,7 @@ const LineChart = (props) => {
         .append("rect")
         .attr("class", "overlay")
         .style("fill", "none")
-        .attr("width", width)
+        .attr("width", width - 35)
         .attr("height", height + 10)
         .style("opacity", 0)
         .style("fill", "red")
