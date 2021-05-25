@@ -8,18 +8,12 @@ const parking = [
     space: 3.2,
   },
   {
-    industry: "Agriculture, Forestry and Fishing",
-    space: 1.9,
-    increase: 8,
-  },
-  {
     industry: "Arts and Recreation Services",
     space: 8.0,
   },
   {
     industry: "Construction",
     space: 5.0,
-    increase: 9,
   },
   {
     industry: "Education and Training",
@@ -32,7 +26,10 @@ const parking = [
   {
     industry: "Financial and Insurance Services",
     space: 3.3,
-    increase: 12,
+  },
+  {
+    industry: "Manufacturing",
+    space: 6.0,
   },
   {
     industry: "Health Care and Social Assistance",
@@ -42,18 +39,18 @@ const parking = [
     industry: "Information Media and Telecommunications",
     space: 5.2,
   },
-  {
-    industry: "Manufacturing",
-    space: 6.0,
-  },
+
   {
     industry: "Other Services",
     space: 3.2,
   },
   {
+    industry: "Wholesale Trade",
+    space: 7.0,
+  },
+  {
     industry: "Professional, Scientific and Technical Services",
     space: 2.6,
-    increase: 8,
   },
   {
     industry: "Public Administration and Safety",
@@ -66,15 +63,15 @@ const parking = [
   {
     industry: "Retail Trade",
     space: 3.2,
-    increase: 13,
   },
   {
     industry: "Transport, Postal and Warehousing",
     space: 7.2,
   },
+
   {
-    industry: "Wholesale Trade",
-    space: 7.0,
+    industry: "Agriculture, Forestry and Fishing",
+    space: 1.9,
   },
 ];
 

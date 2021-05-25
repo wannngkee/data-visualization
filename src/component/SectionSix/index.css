@@ -1,9 +1,29 @@
 .sectionSix {
-  padding: 40px 100px;
+  padding: 35px 100px;
   background-color: #e1e5ea;
 }
 
 .containerSix {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  /* margin-top: 20px; */
+}
+
+.path:hover {
+  fill: #1f3c88;
+  opacity: 0.9;
+}
+
+.sort {
+  font-size: 10px;
+  width: 50px;
+  display: inline-block;
+  font-weight: bold;
+  fill: #04009a;
+  cursor: pointer;
+}
+.sort:hover {
+  fill: #fa9905;
+  font-size: 12px;
+  cursor: pointer;
 }

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Radio } from "antd";
 import * as d3 from "d3";
 import { FaRegHandPointDown } from "react-icons/fa";
