@@ -201,7 +201,7 @@ const SectionFour = () => {
             <div
               className="desc"
               style={{
-                marginBottom: 20,
+                marginBottom: 5,
               }}
             >
               <div

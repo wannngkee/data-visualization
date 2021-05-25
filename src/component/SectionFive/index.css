@@ -3,7 +3,31 @@
   background-color: #f2f2f2;
 }
 
-.containerFive {
+.Five {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.containerFive {
+  margin-top: 50px;
+  display: flex;
+  font-family: monospace;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+}
+
+.guess {
+  font-weight: bold;
+  color: #222;
+}
+
+.radiobtn {
+  background-color: transparent;
+  border: 0 none;
+}
+
+.radiobtn:active {
+  background-color: transparent;
 }

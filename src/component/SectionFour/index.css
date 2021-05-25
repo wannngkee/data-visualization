@@ -8,16 +8,12 @@
   justify-content: space-around;
 }
 
-h3 {
-  font-weight: bold;
-}
-
 .text {
   font-size: 10px;
 }
 
 .number {
-  background-color: #94b5c0;
+  background-color: #a1cae2;
   letter-spacing: normal;
 }
 

@@ -312,7 +312,7 @@ const LineChart = (props) => {
                 <span
                   style={{
                     textDecoration: "underline",
-                    textDecorationColor: "#94b5c0",
+                    textDecorationColor: "#a1cae2",
                   }}
                 >
                   {current.entry.toFixed(2)}%{" "}
@@ -322,7 +322,7 @@ const LineChart = (props) => {
                 <span
                   style={{
                     textDecoration: "underline",
-                    textDecorationColor: "#94b5c0",
+                    textDecorationColor: "#a1cae2",
                   }}
                 >
                   {current.exit.toFixed(2)}%{" "}
