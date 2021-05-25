@@ -116,6 +116,16 @@ const SectionFour = () => {
     { value: "Transport, Postal and Warehousing" },
     { value: "Wholesale Trade" },
   ];
+
+  const totalChange = () => {
+    let total = 0;
+    areaMap.features.forEach((feature) => {
+      allIndustries.forEach((industry) => {
+        total += feature.properties.data[industry][slider / 10];
+      });
+    });
+    return total;
+  };
   const handleClick = () => {
     setSlider(0);
     let count = 0;
@@ -191,17 +201,28 @@ const SectionFour = () => {
             <div
               className="desc"
               style={{
-                visibility: areaInfo.length > 0 ? "visible" : "hidden",
                 marginBottom: 20,
               }}
             >
+              <div
+                style={{
+                  visibility: areaInfo.length > 0 ? "visible" : "hidden",
+                }}
+              >
+                <h3>
+                  Area Name: <span className="number">{areaInfo[0]}</span>
+                </h3>
+                <h3>
+                  Count Change Since 2015:{" "}
+                  <span className="number">
+                    {areaInfo[1] > 0 ? `+${areaInfo[1]}` : areaInfo[1]}
+                  </span>
+                </h3>
+              </div>
               <h3>
-                Area Name: <span className="number">{areaInfo[0]}</span>
-              </h3>
-              <h3>
-                Count Change Since 2015:{" "}
+                Overall Change:{" "}
                 <span className="number">
-                  {areaInfo[1] > 0 ? `+${areaInfo[1]}` : areaInfo[1]}
+                  {totalChange() > 0 ? "+" + totalChange() : totalChange()}
                 </span>
               </h3>
             </div>
@@ -234,6 +255,24 @@ const SectionFour = () => {
                 }}
               >
                 Select All
+              </Button>
+              <Button
+                style={{
+                  flex: 1,
+                  fontSize: 11,
+                  color: "#04009a",
+                }}
+                onClick={() => {
+                  setSelection([
+                    "Construction",
+                    "Education and Training",
+                    "Electricity, Gas, Water and Waste Services",
+                    "Rental, Hiring and Real Estate Services",
+                    "Public Administration and Safety",
+                  ]);
+                }}
+              >
+                Select Top 5
               </Button>
             </div>
             <div className="selections">
