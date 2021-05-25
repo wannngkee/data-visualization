@@ -115,7 +115,7 @@ const BarChart = (props) => {
       )
       .attr("y", (d) => (d.total > 0 ? yScale(d.total) - 5 : 0))
       .text((d) => (d.total > 0 ? d.total : null));
-  }, [colors, keys, height, width]);
+  }, [colors, keys, height, width, margin.top, margin.left]);
 
   return (
     <>
@@ -187,11 +187,11 @@ const SectionTwo = () => {
               }}
             >
               <h3>
-                Yearly growth rate:{" "}
+                Yearly Growth Rate:{" "}
                 <span className="number">{`${avgGrowth}%`}</span>
               </h3>
               <h3>
-                Average survival years:{" "}
+                Average Survival Years:{" "}
                 <span className="number">{`${avgYear} years`}</span>
               </h3>
             </div>
