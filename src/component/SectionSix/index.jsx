@@ -185,7 +185,7 @@ const SectionSix = () => {
             style={{ display: sort ? "none" : "flex" }}
           >
             <FaRegHandPointDown style={{ marginRight: 5, fontSize: 16 }} />
-            Hover for more details
+            Click to sort and Hover for more details
           </div>
         </div>
         <div className="containerSix">
