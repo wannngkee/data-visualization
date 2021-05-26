@@ -17,7 +17,6 @@ section {
   height: 100vh;
   position: relative;
   box-sizing: border-box;
-  /* box-sizing: content-box; */
 }
 
 .sectionTitle {
@@ -43,6 +42,16 @@ h2 h3 {
 }
 
 #tooltip-container {
+  position: absolute;
+  width: auto;
+  background-color: white;
+  padding: 2px 10px 2px 10px;
+  display: none;
+  font-size: 11px;
+  border: 1px solid #555;
+}
+
+.tooltip-container {
   position: absolute;
   width: auto;
   background-color: white;

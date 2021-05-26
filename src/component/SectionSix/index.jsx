@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import parking from "../../data/parking";
 import { useSprings, animated } from "react-spring";
 import * as d3 from "d3";
@@ -8,6 +8,7 @@ import "./index.css";
 
 const Chart = (props) => {
   const { dataset, width, handleClick, sort } = props;
+  const tooltipRef = useRef();
   const height = width;
   const num_bars = 18;
   const angle = (2 * Math.PI) / num_bars;
@@ -47,33 +48,79 @@ const Chart = (props) => {
     })
   );
   return (
-    <svg className="chart" style={{ width: width, height: height }}>
-      <g
-        className="g"
-        style={{
-          transform: `translate(${width / 2.5}px, ${height / 2.5}px)`,
-        }}
-      >
-        <circle className="circle" r={max_radius} stroke="#aaa" fill="none" />
-        {radialBarSprings.map((props, i) => (
-          <animated.path
-            className="path"
-            key={i}
-            d={props.path}
-            fill={props.color}
-            stroke="#fff"
-            onMouseover={(e) => {}}
-          />
-        ))}
-        <animated.text
-          className="sort"
-          transform="translate(-12, 5)"
-          onClick={handleClick}
+    <>
+      <div className="chartContainer">
+        <svg
+          className="chart"
+          style={{ width: width, height: height, marginBottom: 25 }}
         >
-          {sort ? "reset" : "sort"}
-        </animated.text>
-      </g>
-    </svg>
+          <g
+            className="g"
+            style={{
+              transform: `translate(${width / 2.5}px, ${height / 2.5}px)`,
+            }}
+          >
+            <circle
+              className="circle"
+              r={max_radius}
+              stroke="#aaa"
+              fill="none"
+            />
+            {radialBarSprings.map((props, i) => (
+              <animated.path
+                className="path"
+                key={i}
+                d={props.path}
+                fill={props.color}
+                stroke="#fff"
+                onMouseOver={(e, value) => {
+                  const info = props.value.animation.to;
+                  if (info) {
+                    d3.select(tooltipRef.current)
+                      .style("display", "block")
+                      .html(
+                        `<b>Industry:</b> <span class="number">${
+                          info.industry
+                        }</span> <br/><b>Parking Spaces:</b> <span class="number">${
+                          info.space / 10
+                        }</span>`
+                      );
+                  }
+                }}
+                onMouseLeave={() => {
+                  d3.select(tooltipRef.current).style("display", "none");
+                }}
+              >
+                <animateTransform
+                  className="animation"
+                  attributeName="transform"
+                  begin="0s"
+                  dur="20s"
+                  type="rotate"
+                  from="0 0 0"
+                  to="360 0 0"
+                  repeatCount="indefinite"
+                />
+              </animated.path>
+            ))}
+            <animated.text
+              className="sort"
+              transform="translate(-12, 5)"
+              onClick={handleClick}
+            >
+              {sort ? "reset" : "sort"}
+            </animated.text>
+          </g>
+        </svg>
+        <div
+          className="tooltip"
+          ref={tooltipRef}
+          style={{
+            marginTop: sort ? -100 : 0,
+          }}
+        />
+      </div>
+    </>
   );
 };
 
@@ -103,7 +150,8 @@ const SectionSix = () => {
         .transition()
         .duration(2000)
         .attr("transform", `translate(${width / 2.5},${width})`);
-      d3.select(".circle").transition().duration(1000).attr("opacity", "0");
+      d3.select(".circle").transition().duration(2000).attr("opacity", "0");
+      d3.selectAll(".animation").attr("to", "0,0,0");
     } else {
       setDataset(datasets[0]);
       setWidth(400);
@@ -113,8 +161,11 @@ const SectionSix = () => {
         .attr("transform", `translate(${width / 2.5},${width / 2.5})`);
 
       d3.select(".circle").transition().duration(2000).attr("opacity", "1");
+      d3.selectAll(".animation")
+        .transition()
+        .duration(3000)
+        .attr("to", "360,0,0");
     }
-    // d3.select(".path").transition().delay(400);
   };
 
   return (
