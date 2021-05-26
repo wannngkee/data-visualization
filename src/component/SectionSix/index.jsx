@@ -180,7 +180,10 @@ const SectionSix = () => {
           <p>
             The mininum spaces needed for each industry to run successfully.
           </p>
-          <div className="linehover radialhover">
+          <div
+            className="linehover radialhover"
+            style={{ display: sort ? "none" : "flex" }}
+          >
             <FaRegHandPointDown style={{ marginRight: 5, fontSize: 16 }} />
             Hover for more details
           </div>
