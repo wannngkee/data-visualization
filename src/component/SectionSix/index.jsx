@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import parking from "../../data/parking";
 import { useSprings, animated } from "react-spring";
+import { FaRegHandPointDown } from "react-icons/fa";
 import * as d3 from "d3";
 import "./index.css";
 
@@ -116,7 +117,7 @@ const Chart = (props) => {
           className="tooltip"
           ref={tooltipRef}
           style={{
-            marginTop: sort ? -100 : 0,
+            marginTop: sort ? -120 : 0,
           }}
         />
       </div>
@@ -151,7 +152,10 @@ const SectionSix = () => {
         .duration(2000)
         .attr("transform", `translate(${width / 2.5},${width})`);
       d3.select(".circle").transition().duration(2000).attr("opacity", "0");
-      d3.selectAll(".animation").attr("to", "0,0,0");
+      d3.selectAll(".animation")
+        .transition()
+        .duration(2000)
+        .attr("to", "0,0,0");
     } else {
       setDataset(datasets[0]);
       setWidth(400);
@@ -173,7 +177,13 @@ const SectionSix = () => {
       <section className="sectionSix">
         <div className="sectionTitle" style={{ marginBottom: 0 }}>
           <h1>Necessary Parking Spaces</h1>
-          <p>The mininum spaces needed for each industry to run successfully</p>
+          <p>
+            The mininum spaces needed for each industry to run successfully.
+          </p>
+          <div className="linehover radialhover">
+            <FaRegHandPointDown style={{ marginRight: 5, fontSize: 16 }} />
+            Hover for more details
+          </div>
         </div>
         <div className="containerSix">
           <Chart

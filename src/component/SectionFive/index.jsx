@@ -21,14 +21,14 @@ const SectionFive = () => {
     <section className="sectionFive">
       <div className="sectionTitle Five">
         <h1>Parking Spaces and Industries </h1>
-        <h4 style={{ width: "70%" }}>
+        <p style={{ width: "70%" }}>
           A proper parking space is essential to attract and retain customers.
           Despite the development of public transport network, parking capacity
           still has significant impact on business establishments. <br />
-        </h4>
+        </p>
         <h4 style={{ width: "70%" }}>
-          In 2019, <b className="number">1%</b> increase in parking spaces will
-          lead to <b className="number">4%</b> increase in establishment counts.
+          In 2019, <b className="number">1%</b> increase in parking spaces leads
+          to <b className="number">4%</b> increase in establishment counts.
         </h4>
       </div>
       <div className="containerFive">

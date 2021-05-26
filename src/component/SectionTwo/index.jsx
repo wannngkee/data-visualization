@@ -173,7 +173,7 @@ const SectionTwo = () => {
       <section className="sectionTwo">
         <div className="sectionTitle">
           <h1>Business market Overview</h1>
-          <h4>From 2015 to 2019</h4>
+          <p>From 2015 to 2019</p>
         </div>
         <div className="containerTwo">
           <div className="left">

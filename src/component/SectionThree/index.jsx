@@ -356,7 +356,7 @@ const SectionThree = () => {
     <section className="sectionThree">
       <div className="sectionTitle">
         <h1>The Top 5 Thriving Industries</h1>
-        <h4>See how industries grow over the years</h4>
+        <p>See how industries grow over the years</p>
       </div>
       <div className="hint">
         <FaRegHandPointDown className="icon" />

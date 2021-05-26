@@ -142,7 +142,7 @@ const SectionFour = () => {
       <section className="sectionFour">
         <div className="sectionTitle" style={{ marginBottom: 0 }}>
           <h1>Changes on Industry Distribution</h1>
-          <h4>A map walkthrough</h4>
+          <p>A map walkthrough</p>
         </div>
         <div className="containerFour">
           <div className="left" style={{ marginRight: 50 }}>
