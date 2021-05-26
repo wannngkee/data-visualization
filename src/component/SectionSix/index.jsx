@@ -79,11 +79,11 @@ const Chart = (props) => {
                     d3.select(tooltipRef.current)
                       .style("display", "block")
                       .html(
-                        `<b>Industry:</b> <span class="number">${
+                        `<h4>Industry: <span class="number">${
                           info.industry
-                        }</span> <br/><b>Parking Spaces:</b> <span class="number">${
+                        }</span></h4><h4>Parking Spaces: <span class="number">${
                           info.space / 10
-                        }</span>`
+                        }</span></h4>`
                       );
                   }
                 }}

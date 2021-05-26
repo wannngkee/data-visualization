@@ -14,7 +14,7 @@
 
 .number {
   background-color: #a1cae2;
-  letter-spacing: normal;
+  letter-spacing: 1px;
 }
 
 svg .area:hover {
