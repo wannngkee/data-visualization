@@ -8,13 +8,8 @@
   justify-content: space-around;
 }
 
-.text {
-  font-size: 10px;
-}
-
-.number {
-  background-color: #a1cae2;
-  letter-spacing: 1px;
+.ant-slider-mark-text {
+  font-size: 12px;
 }
 
 svg .area:hover {
@@ -45,10 +40,6 @@ svg .area:hover {
   font-size: 16px;
   margin-left: 5px;
   transform: rotate(40deg);
-}
-
-.ant-slider-mark-text {
-  font-size: 12px;
 }
 
 .legend {

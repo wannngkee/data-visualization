@@ -8,9 +8,37 @@ body {
   letter-spacing: 1px;
 }
 
+.backTop {
+  height: 30px;
+  width: 30px;
+  background-color: #1088e9;
+  color: #fff;
+  font-size: 10px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #000;
+}
+
+h2 h3 {
+  font-weight: bold;
+}
+
+.number {
+  background-color: #94b5c0;
+  letter-spacing: 1px;
+}
+
+.sectionTitle h1 {
+  font-weight: 800;
 }
 
 section {
@@ -26,19 +54,29 @@ section {
   text-align: center;
 }
 
-h1 {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #000;
+.left {
+  display: flex;
+  flex-direction: column;
 }
 
-h2 h3 {
-  font-weight: bold;
+.right {
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
-.sectionTitle h1 {
-  font-weight: 800;
+svg {
+  display: block;
+  cursor: pointer;
+}
+
+svg:not(:root) {
+  overflow: visible;
+}
+
+.text {
+  font-size: 10px;
 }
 
 #tooltip-container {
@@ -49,22 +87,4 @@ h2 h3 {
   display: none;
   font-size: 11px;
   border: 1px solid #555;
-}
-
-.tooltip-container {
-  position: absolute;
-  width: auto;
-  background-color: white;
-  padding: 2px 10px 2px 10px;
-  display: none;
-  font-size: 11px;
-  border: 1px solid #555;
-}
-
-.backTop {
-  height: 30px;
-  width: 30px;
-  background-color: #1088e9;
-  color: #fff;
-  font-size: 10px;
 }

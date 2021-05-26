@@ -8,18 +8,6 @@
   justify-content: center;
 }
 
-.industryBar rect:hover {
-  fill: #1f3c88;
-  opacity: 0.9;
-}
-
-.lineChart {
-  display: none;
-  margin-top: 40px;
-  position: relative;
-  left: 10%;
-}
-
 .barChart {
   position: relative;
   left: 20%;
@@ -41,6 +29,18 @@
   margin-top: -3px;
   margin-right: 5px;
   transform: rotate(30deg);
+}
+
+.industryBar rect:hover {
+  fill: #1f3c88;
+  opacity: 0.9;
+}
+
+.lineChart {
+  display: none;
+  margin-top: 40px;
+  position: relative;
+  left: 10%;
 }
 
 .lineDesc {
