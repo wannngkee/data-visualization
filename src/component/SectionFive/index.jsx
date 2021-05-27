@@ -91,13 +91,17 @@ const SectionFive = () => {
           </Radio.Group>
           {value && value === "c" && (
             <div className="response">
-              <h3>👏🏼 That's Correct! Scroll down to discover more.</h3>
+              <h3 style={{ fontWeight: "bold" }}>
+                👏🏼 That's Correct! Scroll down to discover more.
+              </h3>
               <FaRegHandPointDown className="responseIcon" />
             </div>
           )}
           {value && value !== "c" && (
             <div className="response">
-              <h3>😅 Wrong guess. Scroll down to discover more.</h3>
+              <h3 style={{ fontWeight: "bold" }}>
+                😅 Wrong guess. Scroll down to discover more.
+              </h3>
               <FaRegHandPointDown className="responseIcon" />
             </div>
           )}
