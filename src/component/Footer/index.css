@@ -1,0 +1,27 @@
+footer {
+  font-size: 10px;
+  height: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  background: linear-gradient(45deg, #97abb8 0%, #a1cae2 100%);
+}
+
+.footerDesc {
+  margin-top: 10px;
+}
+
+.contactIcon {
+  display: inline-block;
+  margin-top: 2px;
+  margin-left: 8px;
+  margin-right: 8px;
+  font-size: 16px;
+  color: #000;
+}
+
+.contactIcon:hover {
+  color: #eee;
+}
