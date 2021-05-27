@@ -288,7 +288,6 @@ const LineChart = (props) => {
         const index = Math.round(mouse[0] / eachBand);
         const val = xScale.domain()[index];
         const data = lineData.find((obj) => obj.year === val);
-        console.log(data);
         setCurrent(data);
         d3.select(".mouse-line").attr("d", function () {
           var d = "M" + mouse[0] + "," + height;
