@@ -14,7 +14,7 @@ const SectionOne = () => {
       </div>
       <div className="descBlock">
         <p>
-          Find Out the Thriving Industies and the Required Parking Spaces To
+          Find Out the Thriving Industies and the Required Parking Spaces to
           Start with.
         </p>
       </div>
