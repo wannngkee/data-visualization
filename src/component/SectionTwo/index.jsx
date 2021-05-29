@@ -85,8 +85,8 @@ const BarChart = (props) => {
         d3.select("#tooltip-container")
           .style("display", "inline-block")
           .html(`<b>Industry:</b> ${industry} <br/><b>Count:</b> ${count}`)
-          .style("left", event.pageX + "px")
-          .style("top", event.pageY - 800 + "px");
+          .style("left", event.clientX + 10 + "px")
+          .style("top", event.clientY - 10 + "px");
       })
       .on("mouseout", (event, d) => {
         d3.select("#tooltip-container").style("display", "none");

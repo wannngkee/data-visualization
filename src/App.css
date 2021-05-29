@@ -82,9 +82,11 @@ svg:not(:root) {
 #tooltip-container {
   position: absolute;
   width: auto;
-  background-color: white;
+  max-width: 250px;
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 2px 10px 2px 10px;
   display: none;
   font-size: 11px;
   border: 1px solid #555;
+  z-index: 3;
 }
